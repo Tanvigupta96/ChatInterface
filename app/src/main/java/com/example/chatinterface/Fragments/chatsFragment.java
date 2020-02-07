@@ -156,8 +156,7 @@ public class chatsFragment extends Fragment {
 
                                     Log.d("user", userLastSeen);
 //
-                                }
-                                catch (Exception e) {
+                                } catch (Exception e) {
                                     e.printStackTrace();
                                 }
 
@@ -303,7 +302,76 @@ public class chatsFragment extends Fragment {
     }
 
 
-    private String getFormattedLastSeen(String date, String time) throws ParseException {
+    private String getFormattedLastSeen(String date, String time){
+
+        int dd,MM,yyyy;
+        if(date.length() == 17)
+        {
+            MM = getMonth(date.substring(5, 8));
+            dd = Integer.parseInt(date.substring(9,11));
+            yyyy = Integer.parseInt(date.substring(13))-1900;
+        }
+        else
+        {
+            MM = getMonth(date.substring(5, 8));
+            dd = Integer.parseInt(date.substring(9,10));
+            yyyy = Integer.parseInt(date.substring(12));
+        }
+        Date date1 = new Date(yyyy,MM,dd);
+        Log.d("date1", String.valueOf(date1));
+        Calendar now = Calendar.getInstance();
+        Date date2 = new Date(now.getTimeInMillis());
+        Log.d("date2", String.valueOf(date2));
+
+
+        if (date2.getDate()==date1.getDate()) {
+            return "Today ";
+        } else if (date2.getDate() - date1.getDate() == 1) {
+            return "Yesterday ";
+        } else {
+            return  DateFormat.getDateInstance().format(date1);
+        }
+    }
+
+    private int getMonth(String s) {
+        int result = -1;
+        switch (s)
+        {
+            case "Jan" : result = 0;
+                break;
+            case "Feb" : result = 1;
+                break;
+            case "Mar" : result = 2;
+                break;
+            case "Apr" : result = 3;
+                break;
+            case "May" : result = 4;
+                break;
+            case "Jun" : result = 5;
+                break;
+            case "Jul" : result = 6;
+                break;
+            case "Aug" : result = 7;
+                break;
+            case "Sep" : result = 8;
+                break;
+            case "Oct" : result = 9;
+                break;
+            case "Nov" : result =10;
+                break;
+            case "Dec" : result =11;
+                break;
+        }
+        return result;
+    }
+
+
+}
+
+
+
+
+   /* private String getFormattedLastSeen(String date, String time) throws ParseException {
         String pattern = "E, MMM dd, yyyy hh:mm a ";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 
@@ -325,7 +393,8 @@ public class chatsFragment extends Fragment {
         } else {
             return  DateFormat.getDateInstance().format(date1);
         }
-    }
+    }*/
 
 
-}
+
+

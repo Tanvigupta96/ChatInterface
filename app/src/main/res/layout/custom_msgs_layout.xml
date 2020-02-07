@@ -41,7 +41,7 @@
         android:layout_margin="5dp"
         android:scaleType="centerCrop"
         android:layout_alignParentRight="true"
-        android:background="@drawable/imageborder"/>
+       />
 
 
 
@@ -55,7 +55,7 @@
         android:layout_marginTop="13dp"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="50dp"
-        android:background="@drawable/imageborder"/>
+        />
 
     <TextView
         android:id="@+id/sender_msg_text"

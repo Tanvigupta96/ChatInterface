@@ -29,5 +29,11 @@
 
     <style name="AlertDialog" parent ="Base.Theme.AppCompat.Light.Dialog"/>
 
+    <style name="imageviewer" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:homeAsUpIndicator">@drawable/leftarrow</item>
+
+    </style>
+
 
 </resources>
